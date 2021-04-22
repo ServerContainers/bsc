@@ -1,0 +1,13 @@
+version: '3'
+ 
+services:
+  bsc:
+    build: .
+    image: servercontainers/bsc
+    restart: always
+    network_mode: host
+    environment:
+      NETWORK: main
+      #NETWORK: test
+    volumes:
+      - ./data:/data
