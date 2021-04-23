@@ -6,7 +6,7 @@ RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
 
 FROM arm64v8/alpine AS builder
 
-COPY --from=qemu qemu-arm-static /usr/bin
+COPY --from=qemu qemu-aarch64-static /usr/bin
 
 ARG GOLANG_VERSION=1.16.3
 ENV PATH=$PATH:/usr/local/go/bin
@@ -38,7 +38,7 @@ RUN cp /bsc/build/bin/geth /usr/bin/geth \
 FROM arm64v8/alpine
 ENV NETWORK=main
 
-COPY --from=qemu qemu-arm-static /usr/bin
+COPY --from=qemu qemu-aarch64-static /usr/bin
 
 COPY --from=builder /transfer.tar /transfer.tar
 
