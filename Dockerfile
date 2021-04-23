@@ -35,4 +35,16 @@ COPY --from=builder /transfer.tar /transfer.tar
 RUN cd / \
  && tar xvf /transfer.tar
 
-CMD sh -xc "cd /data; [ ! -f '/data/genesis.json' ] && unzip /$NETWORK'net.zip' && geth --datadir . init genesis.json; exec geth --config ./config.toml --datadir . --pprofaddr 0.0.0.0 --metrics --pprof"
+# NODE P2P
+EXPOSE 30311/udp
+EXPOSE 30311/tcp
+
+# pprof / metrics
+EXPOSE 6060
+
+# HTTP / RPC
+EXPOSE 8545
+# Websocket
+EXPOSE 8546
+
+CMD sh -xc "cd /data; [ ! -f '/data/genesis.json' ] && unzip /$NETWORK'net.zip' && geth --datadir . init genesis.json; exec geth --config ./config.toml --datadir . --pprof --pprofaddr 0.0.0.0 --metrics --ws --wsapi eth,net,web3 --wsorigins '*' --wsaddr 0.0.0.0 --wsport 8546 --rpc --rpcapi eth,net,web3,txpool,parlia --rpccorsdomain '*' --rpcvhosts '*' --rpcaddr 0.0.0.0 --rpcport 8545"

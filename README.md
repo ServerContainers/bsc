@@ -4,6 +4,8 @@ Binance Smart Chain Fullnode.
 
 ## Changelogs
 
+* 2021-04-23
+    * accept more connections (ws, rpc) and correct expose
 * 2021-04-22
     * multiarch build
 
