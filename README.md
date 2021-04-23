@@ -30,3 +30,19 @@ For more see: https://docs.binance.org/smart-chain/developer/fullnode.html
 * __/data__
     * data volume to store all the blockchain / binance smart chain data
     * will be initialized the first time with configured network genesis
+
+### Ports
+
+* 6060 `tcp`
+    * pprof / metrics
+
+* 8545 `tcp`
+    * rpc / http
+
+* 8546 `tcp`
+    * websocket
+
+
+* 30311 `udp` `tcp`
+    * node p2p
+
