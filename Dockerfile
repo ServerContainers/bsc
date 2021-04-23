@@ -47,4 +47,4 @@ EXPOSE 8545
 # Websocket
 EXPOSE 8546
 
-CMD sh -xc "cd /data; [ ! -f '/data/genesis.json' ] && unzip /$NETWORK'net.zip' && geth --datadir . init genesis.json; exec geth --config ./config.toml --datadir . --pprof --pprofaddr 0.0.0.0 --metrics --ws --wsapi eth,net,web3 --wsorigins '*' --wsaddr 0.0.0.0 --wsport 8546 --rpc --rpcapi eth,net,web3,txpool,parlia --rpccorsdomain '*' --rpcvhosts '*' --rpcaddr 0.0.0.0 --rpcport 8545"
+CMD sh -xc "cd /data; [ ! -f '/data/genesis.json' ] && unzip /$NETWORK'net.zip' && geth --datadir . init genesis.json && sed -i '/^HTTP/d' ./config.toml; exec geth --config ./config.toml --datadir . --pprof --pprofaddr 0.0.0.0 --metrics --ws --wsapi eth,net,web3 --wsorigins '*' --wsaddr 0.0.0.0 --wsport 8546 --rpc --rpcapi eth,net,web3,txpool,parlia --rpccorsdomain '*' --rpcvhosts '*' --rpcaddr 0.0.0.0 --rpcport 8545"

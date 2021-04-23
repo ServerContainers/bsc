@@ -6,6 +6,7 @@ Binance Smart Chain Fullnode.
 
 * 2021-04-23
     * accept more connections (ws, rpc) and correct expose
+    * http now listens to everything
 * 2021-04-22
     * multiarch build
 
@@ -35,14 +36,10 @@ For more see: https://docs.binance.org/smart-chain/developer/fullnode.html
 
 * 6060 `tcp`
     * pprof / metrics
-
 * 8545 `tcp`
     * rpc / http
-
 * 8546 `tcp`
     * websocket
-
-
 * 30311 `udp` `tcp`
     * node p2p
 
