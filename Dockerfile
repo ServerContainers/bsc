@@ -5,6 +5,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get -q -y install wget \
                           curl \
                           git \
+                          unzip \
                           build-essential \
                           golang && \
     apt-get -q -y clean && \
