@@ -4,7 +4,7 @@ FROM alpine AS qemu
 ENV QEMU_URL https://github.com/balena-io/qemu/releases/download/v3.0.0%2Bresin/qemu-3.0.0+resin-aarch64.tar.gz
 RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
 
-FROM debian:10 as builder
+FROM arm64v8/debian:10 as builder
 
 COPY --from=qemu qemu-aarch64-static /usr/bin
 
@@ -30,7 +30,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     cp /bsc/build/bin/geth /usr/bin/geth && \
     tar cvf /transfer.tar /usr/bin/geth /*.zip
 
-FROM debian:10
+FROM arm64v8/debian:10
 
 COPY --from=qemu qemu-aarch64-static /usr/bin
 
