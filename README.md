@@ -4,6 +4,8 @@ Binance Smart Chain Fullnode.
 
 ## Changelogs
 
+* 2021-04-24
+    * switched from `alpine` to `debian` due to bugs
 * 2021-04-23
     * accept more connections (ws, rpc) and correct expose
     * http now listens to everything
@@ -12,7 +14,7 @@ Binance Smart Chain Fullnode.
 
 ## Info
 
-This is a Binance Smart Chain Fullnode Container running on `_/alpine`.
+This is a Binance Smart Chain Fullnode Container running on `_/debian`.
 
 For more see: https://docs.binance.org/smart-chain/developer/fullnode.html
 
@@ -21,7 +23,7 @@ For more see: https://docs.binance.org/smart-chain/developer/fullnode.html
 ### Samba
 
 *  __NETWORK__
-    * default: `main`
+    * _default:_ `main`
     * can be set to `main` or `test`
     * let's you choose which binance network to use 
     * with existing initialized persistent volume changing has no effect
@@ -37,9 +39,10 @@ For more see: https://docs.binance.org/smart-chain/developer/fullnode.html
 * 6060 `tcp`
     * pprof / metrics
 * 8545 `tcp`
-    * rpc / http
+    * HTTP based JSON RPC API
 * 8546 `tcp`
-    * websocket
+    * WebSocket based JSON RPC API
+* 8547 `tcp`
+    * GraphQL API    
 * 30311 `udp` `tcp`
-    * node p2p
-
+    * Node P2P
