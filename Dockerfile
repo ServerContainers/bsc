@@ -29,7 +29,7 @@ COPY --from=builder /transfer.tar /transfer.tar
 
 RUN cd / \
  && tar xvf /transfer.tar \
- && rm /transfer.tar \
+ && rm /transfer.tar && \
  \
  export DEBIAN_FRONTEND=noninteractive && \
  apt-get -q -y update && \
