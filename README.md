@@ -47,7 +47,7 @@ For more see: https://docs.binance.org/smart-chain/developer/fullnode.html
 * 30311 `udp` `tcp`
     * Node P2P
 
-### Example docker-compose.yml
+## Example docker-compose.yml
 
 ```
 version: '3'
